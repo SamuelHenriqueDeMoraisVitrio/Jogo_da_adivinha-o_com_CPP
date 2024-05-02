@@ -2,7 +2,7 @@
 
 using namespace std;
 
-bool chutes(short numSorte, short dificuldade, short *tentativas, short *pontos){
+bool chutes(short numSorte, short dificuldade, int *tentativas, short *pontos){
   short numChute = 0;
   short numD2 = -1;
 
@@ -38,7 +38,7 @@ bool chutes(short numSorte, short dificuldade, short *tentativas, short *pontos)
 int main(){
   const short numSorte = 42;
   short dificuldade = 0; 
-  short tentativas = 0;
+  int tentativas = 0;
   short pontos = 100;
 
   cout << "\t********************\n";
