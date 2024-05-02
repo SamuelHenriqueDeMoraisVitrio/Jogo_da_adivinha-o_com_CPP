@@ -11,7 +11,7 @@ compile: clear
 	$(COMP) $(OPC) -o $(NOME) *.cpp
 
 clear:
-	rm -rf $(NOME) .*.c.swp .*.h.swp .cache
+	rm -rf $(NOME) .*.cpp.swp .*.h.swp .cache
 	clear
 	@echo ""
 	@ls -alh --color=auto
