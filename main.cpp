@@ -2,6 +2,8 @@
 
 using namespace std;
 
+bool chutes(short numSorte, short dificuldade, int *tentativas, short *pontos);
+
 bool chutes(short numSorte, short dificuldade, int *tentativas, short *pontos){
   short numChute = 0;
   short numD2 = -1;
@@ -20,8 +22,8 @@ bool chutes(short numSorte, short dificuldade, int *tentativas, short *pontos){
 
     cin >> numChute;
 
-    if(numChute < numSorte)cout << "\tSeu numero é menor que o numero da sorte.\n";
-    else if(numChute > numSorte) cout << "\tSeu numero é maior que o numero da sorte.\n";
+    if(numChute < numSorte)cout << "\t\033[1;91mSeu numero é menor que o numero da sorte.\x1b[0m\n";
+    else if(numChute > numSorte) cout << "\t\033[1;33mSeu numero é maior que o numero da sorte.\x1b[0m\n";
 
     if(*tentativas > 0 || numChute == numSorte){
       if(dificuldade == 1) *pontos = *pontos - 2;
@@ -45,12 +47,12 @@ int main(){
   cout << "\t*----Hello Word----*\n";
   cout << "\t********************\n";
 
-  cout << "\n\tEscolha sua dificuldade \n facil: 1\n medio: 2\n dificil: 3\n\tdificuldade: ";
+  cout << "\n\tEscolha sua dificuldade \n \x1b[1;96mfacil: 1\n \x1b[1;90mmedio: 2\n \x1b[1;95mdificil: 3\n\t\x1b[0mdificuldade: ";
   cin >> dificuldade;
 
-  if(chutes(numSorte, dificuldade, &tentativas, &pontos)) cout << "\n\tVocê ganhou, parabéns\n";
+  if(chutes(numSorte, dificuldade, &tentativas, &pontos)) cout << "\n\t\x1b[1;33mVocê ganhou, parabéns\n";
   else{
-    cout << "\n\tVocê perdeu, quem sabe na proxima.\n";
+    cout << "\n\t\033[91mVocê perdeu, quem sabe na proxima.\n";
     pontos = 0;
   }
 
