@@ -15,6 +15,10 @@ bool chutes(short numSorte, short dificuldade){
     cout << "\n\tTentativas " << tentativas - 1 << " chute um numero: ";
     cin >> numChute;
     tentativas++;
+
+    if(numChute < numSorte)cout << "\tSeu numero é menor que o numero da sorte.\n";
+    else if(numChute > numSorte) cout << "\tSeu numero é maior que o numero da sorte.\n";
+
   }while(numChute != numSorte && tentativas != numD2);
 
   return (numChute == numSorte);
