@@ -3,7 +3,9 @@
 sendo elas: [facil, medio, dificil].
   O jogo terá um numero sorteado e o objetivo do jogador é descobrir o numero sorteado pelo metodo de tentativa e erro.
 */
-#include <iostream> //Biblioteca principal de entrada e saida padrão
+#include <iostream> //Biblioteca principal de entrada e saida padrão.
+#include <cstdlib> // Bibliotecas padrão do c.
+#include <ctime> // Biblioteca time do c.
 
 using namespace std; // using std para agilizar o proscesso de codar os 'cout' e 'cin'.
 
@@ -32,8 +34,8 @@ bool chutes(short numSorte, short dificuldade, int *tentativas, short *pontos){ 
 
     if(*tentativas > 0 || numChute == numSorte){ // Condição para pular a primeira execução e caso acerte.
       if(dificuldade == 1) *pontos = *pontos - 2; // Faz a diminuição de pontos de acordo com dificuldade escolhida.
-      else if(dificuldade == 2) *pontos = *pontos - 14; // Faz a diminuição de pontos de acordo com dificuldade escolhida.
-      else if(dificuldade == 3) *pontos = *pontos - 60; // Faz a diminuição de pontos de acordo com dificuldade escolhida.
+      else if(dificuldade == 2) *pontos = *pontos - 12; // Faz a diminuição de pontos de acordo com dificuldade escolhida.
+      else if(dificuldade == 3) *pontos = *pontos - 43; // Faz a diminuição de pontos de acordo com dificuldade escolhida.
     }
 
     *tentativas = *tentativas + 1; // Acrescenta 1 a tentativas.
@@ -43,7 +45,10 @@ bool chutes(short numSorte, short dificuldade, int *tentativas, short *pontos){ 
 }
 
 int main(){
-  const short numSorte = 42; // O numero sorteado
+  
+  srand(time(NULL));
+  const short numSorte = rand() % 101; // O numero sorteado
+
   short dificuldade = 0; // Valor inicial para dificuldade
   int tentativas = 0; // valor inicial para o numero de tentativas
   short pontos = 100; // valor inicial de pontos, para caso seja escolhida a dificuldade 1.
@@ -57,7 +62,7 @@ int main(){
 
   if(chutes(numSorte, dificuldade, &tentativas, &pontos)) cout << "\n\t\x1b[1;33mVocê ganhou, parabéns\n"; // Aqui vai executar a função chutes e quado finalizar vai retornar um valor boleano, sendo que se for verdadeiro, aparecerá a mensagem para o jogador que ele ganhou.
   else{
-    cout << "\n\t\033[91mVocê perdeu, quem sabe na proxima.\n"; // Caso contrario mostrará a mensagem que perdeu.
+    cout << "\n\t\033[91mVocê perdeu. O numero era " << numSorte << " quem sabe na proxima.\n"; // Caso contrario mostrará a mensagem que perdeu.
     pontos = 0; // E vai perder a pontuação.
   }
 
